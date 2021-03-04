@@ -6,8 +6,8 @@ import {useEffect} from 'react';
 function App() {
 
   const fetchData = async () => {
-    const result = await axios.get('./functions/hello-function');
-    console.log(result.data);
+    const result = await axios.get('/.netlify/functions/hello-function');
+    console.log(result);
   }
 
   useEffect(() => {
