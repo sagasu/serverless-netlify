@@ -1,13 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 
 function App() {
+  const [message, setMessage] = useState('waiting...');
 
   const fetchData = async () => {
     const result = await axios.get('/.netlify/functions/hello-function');
     console.log(result);
+    setMessage(result.data.message);
   }
 
   useEffect(() => {
@@ -19,7 +21,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {message}
         </p>
         <a
           className="App-link"
